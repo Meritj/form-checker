@@ -1,13 +1,12 @@
 const inputs = document.querySelectorAll('input[type="text"], input[type="password"]');
-// ici on choisit de sélectionner tous nos input de type texte ou password, on les enregistre dans une constance.
 
-const progressBar = document.getElementById('progress-bar'); // ici on sélectionne la progress bar avec id HTML
+const progressBar = document.getElementById('progress-bar');
 let pseudo, email, password, confirmPass;
 const form = document.querySelector('form');
 
 const errorDisplay = (tag, message, valid) => {
-    const container = document.querySelector("." + tag + "-container"); // la le tag permet de choisir l'élément pointé
-    const span = document.querySelector("." + tag + "-container > span"); // on met toute la logique ici
+    const container = document.querySelector("." + tag + "-container"); 
+    const span = document.querySelector("." + tag + "-container > span"); 
 
     if (!valid) {
         container.classList.add('error');
@@ -63,7 +62,7 @@ const passwordChecker = (value) => {
         errorDisplay("password", "", true);
         password = value;
     }
-    if(confirmPass)confirmChecker(confirmPass); // si jamais quelque chose est écrit dans confirm pass : relance le confirm checker
+    if(confirmPass)confirmChecker(confirmPass); 
 };
 const confirmChecker = (value) => {
     if (value !== password) {
@@ -77,8 +76,8 @@ const confirmChecker = (value) => {
 
 
 inputs.forEach((input) => {
-    input.addEventListener('input', (e) => { // on crée des eventlistener pour tous les inputs.
-        switch (e.target.id) { // test la valeur de E.target, ensuite on joue la fonction correspondante.
+    input.addEventListener('input', (e) => { 
+        switch (e.target.id) {
             case "pseudo" :
                 pseudoChecker(e.target.value)
                 break;
@@ -100,7 +99,7 @@ inputs.forEach((input) => {
 form.addEventListener('submit', (e)=>{
         e.preventDefault();
         if (pseudo && email && password && confirmPass){
-            const data = { // on regroupe tout dans un objet
+            const data = { 
                 pseudo : pseudo,
                 email : email,
                 password : password,
